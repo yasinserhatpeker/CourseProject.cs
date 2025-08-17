@@ -18,7 +18,15 @@ public class StudentController : Controller
         return View();
     }
 
-    
+    [HttpPost]
+    public async Task<IActionResult> Create(Student model)
+    {
+        _context.Students.Add(model);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index", "Home");
+        
+     }
+ 
     
 
 }
