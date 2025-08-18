@@ -1,4 +1,8 @@
-@model Student 
+@model Student
+
+<h2>Add Trainee</h2>
+<a href="/Student/List" class="btn btn-danger">Trainee List</a>
+<hr>
 
 <form asp-controller="Student" asp-action="Create" method="post">
 
@@ -14,7 +18,7 @@
   <label asp-for="StudentEmail" class="form-label">Email</label>
   <input asp-for="StudentEmail" class="form-control">
 
-  <button class="btn-secondary" type="submit">Save</button>
+  <button class="btn-secondary" style="width: 70px; margin-top:20px;" type="submit">Save</button>
 
 
 </form>

@@ -1,6 +1,7 @@
 namespace efCore.Controllers;
 using efCore.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class StudentController : Controller
 {
@@ -9,6 +10,10 @@ public class StudentController : Controller
     {
         _context = context;
 
+    }
+    public async Task<IActionResult> List()
+    {
+         return View( await _context.Students.ToListAsync());
     }
 
     [HttpGet]
@@ -24,9 +29,9 @@ public class StudentController : Controller
         _context.Students.Add(model);
         await _context.SaveChangesAsync();
         return RedirectToAction("Index", "Home");
-        
-     }
- 
+
+    }
+
     
 
 }
