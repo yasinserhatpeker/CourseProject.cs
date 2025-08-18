@@ -1,0 +1,9 @@
+@model Student
+
+<p>Do you really want to delete <b>@Model.StudentName @Model.StudentSurname</b> </p>
+
+<form asp-controller="Student" asp-action="Delete">
+  <input type="hidden" asp-for="StudentId">
+  <button type="submit" class="btn btn-danger">Yes I want to delete</button>
+  <a asp-action="List">No go back</a>
+</form>
