@@ -2,6 +2,7 @@ namespace efCore.Controllers;
 using efCore.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 public class StudentController : Controller
 {
@@ -47,6 +48,38 @@ public class StudentController : Controller
         return View(student);
     }
 
-    
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+
+    public async Task<IActionResult> Edit(int id, Student model)
+    {
+        if (id != model.StudentId)
+        {
+            return NotFound();
+        }
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(model);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Students.Any(student => student.StudentId == model.StudentId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("List");
+        }
+        return View(model);
+    }
+
 
 }
