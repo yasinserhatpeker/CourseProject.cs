@@ -10,7 +10,11 @@ public class Student
     public string? StudentName { get; set; }
 
     public string? StudentSurname { get; set; }
-
+    
+    public string NameSurname { get
+        {
+           return this.StudentName + " " + this.StudentSurname;
+        } }
     public string? StudentEmail { get; set; }
 
     public string? StudentPhone { get; set; }

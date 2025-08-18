@@ -23,14 +23,27 @@ public class CourseRegisterController : Controller
 
     public async Task<IActionResult> Create()
     {
-        ViewBag.Students = new SelectList(await _context.Students.ToListAsync(), "StudentId", "StudentName");
+        ViewBag.Students = new SelectList(await _context.Students.ToListAsync(), "StudentId", "NameSurname");
         ViewBag.Courses = new SelectList(await _context.Courses.ToListAsync(), "CourseId", "CourseName");
 
         return View();
 
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+
+    public async Task<IActionResult> Create(CourseRegister model)
+    {
+        model.RegisterTime = DateTime.Now;
+        _context.CourseRegisters.Add(model);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("List");
+
+    }    
     
-    
+
 
 
 
