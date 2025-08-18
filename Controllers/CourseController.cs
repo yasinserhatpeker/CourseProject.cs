@@ -26,9 +26,10 @@ public class CourseController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult List()
+    public async Task<IActionResult> List()
     {
-        return View();
+        var courses = await _context.Courses.ToListAsync();
+        return View(courses);
     }
 
 }
