@@ -21,6 +21,7 @@ public class CourseController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Course model)
     {
         _context.Courses.Add(model);
@@ -50,6 +51,7 @@ public class CourseController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Course model, int id)
     {
         if (id != model.CourseId)
@@ -98,6 +100,7 @@ public class CourseController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id, Course model)
     {
         if (id != model.CourseId)
@@ -111,9 +114,11 @@ public class CourseController : Controller
         }
         _context.Courses.Remove(course);
         await _context.SaveChangesAsync();
-         
-         return RedirectToAction("List");
+
+        return RedirectToAction("List");
     }
+    
+    
 
 }
 
