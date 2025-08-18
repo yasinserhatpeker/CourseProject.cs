@@ -31,5 +31,7 @@ public class CourseController : Controller
         var courses = await _context.Courses.ToListAsync();
         return View(courses);
     }
+   
+
 
 }
