@@ -25,7 +25,7 @@ public class CourseController : Controller
     {
         _context.Courses.Add(model);
         await _context.SaveChangesAsync();
-        return RedirectToAction("Index");
+        return RedirectToAction("List");
     }
 
     public async Task<IActionResult> List()
