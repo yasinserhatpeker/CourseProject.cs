@@ -78,11 +78,46 @@ public class CourseController : Controller
             return RedirectToAction("List");
         }
         return View(model);
-    
-  }
 
+    }
+
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var course = await _context.Courses.FindAsync(id);
+        if (course == null)
+        {
+            return NotFound();
+        }
+        return View(course);
+
+
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id, Course model)
+    {
+        if (id != model.CourseId)
+        {
+            return NotFound();
+        }
+        var course = await _context.Courses.FindAsync(id);
+        if (course == null)
+        {
+            return NotFound();
+        }
+        _context.Courses.Remove(course);
+        await _context.SaveChangesAsync();
+         
+         return RedirectToAction("List");
+    }
 
 }
+
+
     
    
 
