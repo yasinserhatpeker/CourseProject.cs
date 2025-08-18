@@ -15,5 +15,7 @@ public class CourseRegisterController : Controller
         _context = context;
     }
 
+    
+
 
 }

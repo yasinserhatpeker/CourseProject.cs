@@ -1,0 +1,25 @@
+@model CourseRegister
+@{
+    ViewData["Title"] = "Course Register Page";
+}
+
+<h2>Register to a Course</h2>
+<a href="/Course/List" class="btn btn-danger">Course List</a>
+<hr>
+
+<form asp-controller="CourseRegister" asp-action="Create" method="post">
+<div class="mb-3">
+  <label asp-for="StudentId" class="form-label">Trainee</label>
+  <select asp-items="ViewBag.Students" class="form-control"></select>
+  
+</div>
+
+<div class="mb-3">
+  <label asp-for="CourseId" class="form-label">Course</label>
+ <select asp-items="ViewBag.Courses" class="form-control">Course</select>
+  </div>
+
+ <button class="btn-secondary" style="width: 70px; margin-top:20px;" type="submit" >Save</button>
+
+
+</form>

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace efCore.Data;
 
-public class CourseApply
+public class CourseRegister
 {
     [Key]
     public int RegisterId { get; set; }

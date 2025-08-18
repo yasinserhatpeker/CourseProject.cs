@@ -12,6 +12,6 @@ public class DataContext : DbContext
 
     public DbSet<Course> Courses => Set<Course>();
 
-    public DbSet<CourseApply> CourseApplies => Set<CourseApply>();
+    public DbSet<CourseRegister> CourseRegisters => Set<CourseRegister>();
 
 }
