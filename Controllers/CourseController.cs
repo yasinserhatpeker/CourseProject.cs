@@ -24,6 +24,11 @@ public class CourseController : Controller
         _context.Courses.Add(model);
         await _context.SaveChangesAsync();
         return RedirectToAction("Index");
-}
+    }
+
+    public IActionResult List()
+    {
+        return View();
+    }
 
 }
