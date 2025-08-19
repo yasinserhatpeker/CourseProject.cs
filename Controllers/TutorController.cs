@@ -23,5 +23,23 @@ public class TutorController : Controller
         return View();
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(Tutor model)
+    {
+        _context.Tutors.Add(model);
+        await _context.SaveChangesAsync();
+        return View("Index", "Home");
+    }
+
+    public async Task<IActionResult> List()
+    {
+        return View(await _context.Tutors.ToListAsync());
+    }
+    
+    
+
+
+
 
 }

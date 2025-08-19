@@ -1,0 +1,33 @@
+@model IEnumerable<Tutor>
+    @{
+    ViewData["Title"] = "Tutor List Page";
+}
+
+<h2>Tutor List</h2>
+<a href="/Tutor/Create" class="btn btn-primary">Add Tutor</a>
+<hr>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width:150px;" >@Html.DisplayNameFor(m=> m.TutorId)</th>
+            <th >@Html.DisplayNameFor(m=> m.TutorName)</th>
+            <th >@Html.DisplayNameFor(m=> m.TutorSurname)</th>
+            <th style="width:150px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach(var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TutorId)</td>
+            <td>@Html.DisplayFor(modelItem => item.TutorName)</td>
+            <td>@Html.DisplayFor(modelItem => item.TutorSurname)</td>
+            <td>
+                <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.TutorId" class="btn btn-sm btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.TutorId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+      }
+    </tbody>
+    
+</table>
