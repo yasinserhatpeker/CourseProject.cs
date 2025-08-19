@@ -9,5 +9,8 @@ public class Course
     public string? CourseName { get; set; }
     public ICollection<CourseRegister> CourseRegisters { get; set; } = new List<CourseRegister>();
     
+    public int? TutorId { get; set; }
+    public Tutor Tutor { get; set; } = null!;
+    
 
 }

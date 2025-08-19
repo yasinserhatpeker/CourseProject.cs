@@ -14,4 +14,6 @@ public class DataContext : DbContext
 
     public DbSet<CourseRegister> CourseRegisters => Set<CourseRegister>();
 
+    public DbSet<Tutor> Tutors => Set<Tutor>();
+
 }

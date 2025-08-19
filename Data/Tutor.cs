@@ -16,5 +16,7 @@ public class Tutor()
     public string? TutorPhone { get; set; }
 
     public DateTime StartTime { get; set; }
+
+    public ICollection<Course> Courses{ get; set; } = new List<Course>();
     
 }

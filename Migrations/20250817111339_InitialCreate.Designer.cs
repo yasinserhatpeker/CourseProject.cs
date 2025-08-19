@@ -51,7 +51,7 @@ namespace efCore.Migrations
 
                     b.HasKey("ApplyId");
 
-                    b.ToTable("CourseApplies");
+                    b.ToTable("CourseRegisters");
                 });
 
             modelBuilder.Entity("efCore.Data.Student", b =>

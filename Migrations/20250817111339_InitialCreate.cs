@@ -12,18 +12,18 @@ namespace efCore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CourseApplies",
+                name: "CourseRegisters",
                 columns: table => new
                 {
-                    ApplyId = table.Column<int>(type: "INTEGER", nullable: false)
+                    RegisterId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false),
                     CourseId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ApplyTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    RegisterTime = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CourseApplies", x => x.ApplyId);
+                    table.PrimaryKey("PK_CourseRegisters", x => x.RegisterId);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,7 +60,7 @@ namespace efCore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CourseApplies");
+                name: "CourseRegisters");
 
             migrationBuilder.DropTable(
                 name: "Courses");
