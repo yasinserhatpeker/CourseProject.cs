@@ -29,15 +29,61 @@ public class TutorController : Controller
     {
         _context.Tutors.Add(model);
         await _context.SaveChangesAsync();
-        return View("Index", "Home");
+        return View("Index","Home");
     }
 
     public async Task<IActionResult> List()
     {
         return View(await _context.Tutors.ToListAsync());
     }
-    
-    
+
+
+    public async Task<IActionResult> Edit(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var tutor = await _context.Tutors.FirstOrDefaultAsync(x => x.TutorId == id);
+        if (tutor == null)
+        {
+            return NotFound();
+        }
+        return View(tutor);
+    }
+
+    [HttpPost]
+    [IgnoreAntiforgeryToken]
+
+    public async Task<IActionResult> Edit(int id, Tutor model)
+    {
+        if (id != model.TutorId)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(model);
+                await _context.SaveChangesAsync();
+            }
+            catch (DBConcurrencyException)
+            {
+                if (!_context.Tutors.Any(tutor => tutor.TutorId == model.TutorId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("List");
+        }
+        return View(model);
+    }    
 
 
 

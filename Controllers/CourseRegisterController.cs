@@ -18,7 +18,7 @@ public class CourseRegisterController : Controller
 
     public async Task<IActionResult> List()
     {
-        var courseRegisters = await _context.CourseRegisters.Include(x=>x.Student).Include(x=>x.Course).ToListAsync();
+        var courseRegisters = await _context.CourseRegisters.Include(x => x.Student).Include(x => x.Course).ToListAsync();
         return View(courseRegisters);
     }
 
@@ -42,7 +42,24 @@ public class CourseRegisterController : Controller
 
         return RedirectToAction("List");
 
-    }    
+    }
+
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var courseRegister = await _context.CourseRegisters.FindAsync(id);
+        if (courseRegister == null)
+        {
+            return NotFound();
+        }
+        return View(courseRegister);
+    }
+
+    
+
     
 
 

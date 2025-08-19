@@ -1,0 +1,44 @@
+@model Tutor
+@{
+    ViewData["Title"] = "Tutor Edit Page";
+}
+
+<h2>Tutor Update</h2>
+<a href="/Tutor/List" class="btn btn-danger">Tutor List</a>
+<hr>
+
+<div class="row">
+  <div class="col-8">
+<form asp-controller="Tutor" asp-action="Edit" method="post">
+<input type="hidden" asp-for="TutorId">
+<div class="mb-3">
+  <label asp-for="TutorName" class="form-label">Tutor Name</label>
+  <input asp-for="TutorName" class="form-control">
+  </div>
+<div class="mb-3">
+  <label asp-for="TutorSurname" class="form-label">Tutor Surname</label>
+  <input asp-for="TutorSurname" class="form-control">
+  </div>
+<div class="mb-3">
+  <label asp-for="TutorPhone" class="form-label">Phone</label>
+  <input asp-for="TutorPhone" class="form-control">
+  </div>
+
+  <div class="mb-3">
+  <label asp-for="TutorEmail" class="form-label">Email</label>
+  <input asp-for="TutorEmail" class="form-control">
+</div>
+  <button class="btn-secondary" style="width: 70px; margin-top:20px;" type="submit">Save</button>
+
+
+</form>
+
+  </div>
+  <div class="col-4">
+    <h4>Courses</h4>
+    <hr>
+    
+  </div>
+</div>
+
+
