@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Course Edit Page";
-}
+  }
+  <h2>Course Update</h2>
+  <a href="/Course/List" class="btn btn-danger">Course List</a>
+  <hr>
 
-<h2>Course Update</h2>
-<a href="/Course/List" class="btn btn-danger">Course List</a>
-<hr>
-
+<div class="row">
+  <div class="col-8">
 <form asp-controller="Course" asp-action="Edit" method="post">
 <input type="hidden" asp-for="CourseId">
 <div class="mb-3">
@@ -19,3 +20,16 @@
 
 
 </form>
+  </div>
+  <div class="col-4">
+    <h4>Trainees</h4>
+    <hr>
+    <ul>
+      @foreach(var item in @Model.CourseRegisters) {
+        <li>@item.Student.StudentName</li>
+      }
+    </ul>
+  </div>    
+</div>
+
+
