@@ -24,7 +24,7 @@
             <td>@Html.DisplayFor(modelItem => item.TutorSurname)</td>
             <td>
                 <a asp-controller="Tutor" asp-action="Edit" asp-route-id="@item.TutorId" class="btn btn-sm btn-primary">Edit</a>
-                <a asp-action="Delete" asp-route-id="@item.TutorId" class="btn btn-sm btn-danger">Delete</a>
+                <a asp-controller="Tutor" asp-action="Delete" asp-route-id="@item.TutorId" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
       }

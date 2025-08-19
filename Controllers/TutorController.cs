@@ -29,7 +29,8 @@ public class TutorController : Controller
     {
         _context.Tutors.Add(model);
         await _context.SaveChangesAsync();
-        return View("Index","Home");
+        
+        return View(model);
     }
 
     public async Task<IActionResult> List()
@@ -83,9 +84,41 @@ public class TutorController : Controller
             return RedirectToAction("List");
         }
         return View(model);
-    }    
+    }
 
 
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var tutor = await _context.Tutors.FindAsync(id);
+        if (tutor == null)
+        {
+            return NotFound();
+        }
+        return View(tutor);
+    }
+    [HttpPost]
+   [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int? id, Tutor model)
+    {
+        if (id != model.TutorId)
+        {
+            return NotFound();
+        }
+
+        var tutor = await _context.Tutors.FindAsync(id);
+        if (tutor == null)
+        {
+            return NotFound();
+        }
+        _context.Tutors.Remove(tutor);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("List");
+    }
 
 
 }

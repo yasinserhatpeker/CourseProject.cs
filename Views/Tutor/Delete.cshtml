@@ -1,0 +1,12 @@
+@model Tutor
+@{
+    ViewData["Title"] = "Tutor Delete Page";
+}
+
+<p>Do you really want to delete <b>@Model.TutorName @Model.TutorSurname?</b> </p>
+
+<form asp-controller="Tutor" asp-action="Delete">
+  <input type="hidden" asp-for="TutorId">
+  <button type="submit" class="btn btn-danger">Yes I want to delete</button>
+  <a asp-action="List" class="btn btn-primary">No go back</a>
+</form>

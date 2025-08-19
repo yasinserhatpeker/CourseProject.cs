@@ -59,6 +59,7 @@ public class CourseRegisterController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
 
     public async Task<IActionResult> Delete(int? id, CourseRegister model)
     {
