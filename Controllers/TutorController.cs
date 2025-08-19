@@ -9,6 +9,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 public class TutorController : Controller
 {
+
+    private readonly DataContext _context;
+
+    public TutorController(DataContext dataContext)
+    {
+        _context = dataContext;
+    }
     
     
+
+
 }
