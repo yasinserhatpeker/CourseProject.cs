@@ -16,8 +16,12 @@ public class TutorController : Controller
     {
         _context = dataContext;
     }
-    
-    
+
+
+    public IActionResult Create()
+    {
+        return View();
+    }
 
 
 }
