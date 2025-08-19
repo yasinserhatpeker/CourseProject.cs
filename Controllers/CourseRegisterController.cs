@@ -58,7 +58,25 @@ public class CourseRegisterController : Controller
         return View(courseRegister);
     }
 
-    
+    [HttpPost]
+
+    public async Task<IActionResult> Delete(int? id, CourseRegister model)
+    {
+        if (id != model.CourseId)
+        {
+            return NotFound();
+        }
+        var courseRegister = await _context.CourseRegisters.FindAsync(id);
+        if (courseRegister == null)
+        {
+            return NotFound();
+        }
+        _context.CourseRegisters.Remove(courseRegister);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("List");
+
+    }
 
     
 

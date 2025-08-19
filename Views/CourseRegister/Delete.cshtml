@@ -1,0 +1,12 @@
+@model CourseRegister
+@{
+    ViewData["Title"] = "Registeration Delete Page";
+}
+
+<p>Do you really want to delete <b>@Model.Course.CourseName </b> </p>
+
+<form asp-controller="CourseRegister" asp-action="Delete">
+  <input type="hidden" asp-for="CourseId">
+  <button type="submit" class="btn btn-danger">Yes I want to delete</button>
+  <a asp-action="List" class="btn btn-primary">No go back</a>
+</form>
