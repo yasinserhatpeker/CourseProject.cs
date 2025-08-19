@@ -39,7 +39,9 @@
     <hr>
     <ul>
       @foreach(var item in @Model.CourseRegisters) {
-        <li></li>
+        <li>
+          @item.Course.CourseName
+        </li>
       }
     </ul>
   </div>
