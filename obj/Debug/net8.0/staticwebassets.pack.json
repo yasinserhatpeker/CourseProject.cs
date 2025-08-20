@@ -13,6 +13,26 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/img/asp-netcore.jpg",
+      "PackagePath": "staticwebassets/img/asp-netcore.jpg"
+    },
+    {
+      "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/img/javaspring.png",
+      "PackagePath": "staticwebassets/img/javaspring.png"
+    },
+    {
+      "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/img/laravel.webp",
+      "PackagePath": "staticwebassets/img/laravel.webp"
+    },
+    {
+      "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/img/python.jpg",
+      "PackagePath": "staticwebassets/img/python.jpg"
+    },
+    {
+      "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/img/spring2.jpg",
+      "PackagePath": "staticwebassets/img/spring2.jpg"
+    },
+    {
       "Id": "/Users/yasinpeker/Desktop/efCore/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

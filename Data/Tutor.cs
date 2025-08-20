@@ -10,7 +10,14 @@ public class Tutor()
     public string? TutorName { get; set; }
 
     public string? TutorSurname { get; set; }
-
+   
+     public string NameSurname
+    {
+        get
+        {
+            return this.TutorName + " " + this.TutorSurname;
+        }
+    }
     public string? TutorEmail { get; set; }
 
     public string? TutorPhone { get; set; }

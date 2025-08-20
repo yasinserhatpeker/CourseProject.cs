@@ -3,6 +3,7 @@ namespace efCore.Controllers;
 using System.Data;
 using efCore.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -15,8 +16,9 @@ public class CourseController : Controller
         _context = context;
     }
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
+        ViewBag.Tutors=new SelectList(await _context.Tutors.ToListAsync(),"TutorId","NameSurname");
         return View();
     }
 
@@ -31,7 +33,7 @@ public class CourseController : Controller
 
     public async Task<IActionResult> List()
     {
-        var courses = await _context.Courses.ToListAsync();
+         var courses = await _context.Courses.ToListAsync();
         return View(courses);
     }
 
@@ -42,17 +44,26 @@ public class CourseController : Controller
         {
             return NotFound();
         }
-       var course = await _context.Courses.Include(c => c.CourseRegisters).ThenInclude(a=>a.Student).FirstOrDefaultAsync(x=>x.CourseId == id);
+       var course = await _context.Courses.Include(c => c.CourseRegisters).ThenInclude(a=>a.Student).Select(c=> new CourseViewModel()
+       {
+           CourseId = c.CourseId,
+           CourseName = c.CourseName,
+           CourseRegisters = c.CourseRegisters,
+           TutorId=c.TutorId,
+           
+          }).FirstOrDefaultAsync(x=>x.CourseId == id);
         if (course == null)
         {
             return NotFound();
         }
+      ViewBag.Tutors=new SelectList(await _context.Tutors.ToListAsync(),"TutorId","NameSurname");
+
         return View(course);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Course model, int id)
+    public async Task<IActionResult> Edit(CourseViewModel model, int id)
     {
         if (id != model.CourseId)
         {
@@ -62,7 +73,13 @@ public class CourseController : Controller
         {
             try
             {
-                _context.Update(model);
+                _context.Update(new Course()
+                {
+                    CourseId = model.CourseId,
+                    CourseName = model.CourseName,
+                    TutorId=model.TutorId,
+                     
+                });
                 await _context.SaveChangesAsync();
 
             }

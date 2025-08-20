@@ -1,4 +1,4 @@
-@model Course
+@model CourseViewModel
 @{
     ViewData["Title"] = "Course Create Page";
 }
@@ -10,6 +10,14 @@
   <label asp-for="CourseName" class="form-label">Course Name</label>
   <input asp-for="CourseName" class="form-control">
 </div>
+
+<div class="mb-3">
+  <label asp-for="TutorId" class="form-label">Tutor Name</label>
+  <select asp-for="TutorId" asp-items="ViewBag.Tutors" class="form-select">
+    <option value="">Choose</option>
+  </select>
+</div>
+
   <button class="btn-secondary" style="width: 70px; margin-top:20px;" type="submit" >Add</button>
 
 </form>
