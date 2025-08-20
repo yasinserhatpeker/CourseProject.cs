@@ -6,6 +6,7 @@
 <h2>Add Course</h2>
 
 <form asp-controller="Course" asp-action="Create" method="post">
+  <div asp-validation-summary="All"></div>
 <div class="mb-3">
   <label asp-for="CourseName" class="form-label">Course Name</label>
   <input asp-for="CourseName" class="form-control">

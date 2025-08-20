@@ -24,11 +24,26 @@ public class CourseController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Course model)
+    public async Task<IActionResult> Create(CourseViewModel model)
     {
-        _context.Courses.Add(model);
-        await _context.SaveChangesAsync();
-        return RedirectToAction("List");
+
+        if (ModelState.IsValid)
+        {
+            _context.Courses.Add(new Course()
+            {
+
+                CourseId = model.CourseId,
+                CourseName = model.CourseName,
+                TutorId = model.TutorId,
+
+            });
+            await _context.SaveChangesAsync();
+            return RedirectToAction("List");
+
+        }
+         ViewBag.Tutors=new SelectList(await _context.Tutors.ToListAsync(),"TutorId","NameSurname");
+
+        return View(model);
     }
 
     public async Task<IActionResult> List()
