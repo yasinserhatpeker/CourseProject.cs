@@ -1,8 +1,8 @@
-# CourseProject.cs
+# Course Project 
 
 ## About the Project
 
-CourseProject.cs is a modern course management application developed using C#. The project uses EntityFramework Core as the ORM and SQLite as the database.
+Course Project is a modern course management application developed using C#. The project uses EntityFramework Core as the ORM and SQLite as the database.
 
 ## 🚀 Features
 
